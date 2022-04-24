@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 
 const config = {
-  readOnlyChainId: ChainId.Polygon,
+  readOnlyChainId: process.env.DEFAULT_CHAIN_ID ? Number.parseInt(process.env.DEFAULT_CHAIN_ID) : ChainId.Polygon,
 }
 
 const root = ReactDOM.createRoot(
