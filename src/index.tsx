@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { DAppProvider, ChainId } from "@usedapp/core";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+
+const config = {
+  readOnlyChainId: ChainId.Polygon,
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <DAppProvider config={config}>
+      <App />
+    </DAppProvider>
   </React.StrictMode>
 );
 
