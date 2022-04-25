@@ -27,7 +27,7 @@ function Wallet() {
       const network = networks.find((network) => network.chainId === chainId);
       network && setChain(network);
     }
-  }, [chainId, setChain]);
+  }, [account, chainId, networks, setChain]);
 
   useEffect(() => {
     if (error) {
