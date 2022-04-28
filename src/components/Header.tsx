@@ -1,5 +1,6 @@
 import React from 'react';
-import { Center, Box, Heading } from '@chakra-ui/react';
+import { Flex, Box, HStack, Avatar, Heading, Spacer, Button } from '@chakra-ui/react';
+import { FaFacebook, FaTwitter } from 'react-icons/fa'
 import logo from '../logo.svg';
 
 type HeaderProps = {
@@ -9,13 +10,29 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = () => {
 
   return (
-    <Center style={{ height: '50px', background: '#319795' }}>
-      <Box p='2'>
-        <Heading size='md'>
-          LRHMeta App
-        </Heading>
+    <Flex bg="teal" align="center" >
+      <Spacer />
+      <Box p='4'>
+        <HStack>
+          <Avatar src={logo} />
+          <Heading size='md' color='white'>
+            LrhMeta App
+          </Heading>
+        </HStack>
       </Box>
-    </Center>
+      <Spacer />
+      <Box p='4'>
+        <HStack spacing={2}>
+          <Button variant='link'>
+            <FaFacebook size="30" color="white" />
+          </Button>
+          <Button variant='link'>
+            <FaTwitter size="30" color="white" />
+          </Button>
+        </HStack>
+      </Box>
+      <Spacer />
+    </Flex>
   )
 }
 
