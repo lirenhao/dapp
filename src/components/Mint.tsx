@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Button, Code, VStack } from '@chakra-ui/react';
+import { Button, Code, VStack } from '@chakra-ui/react';
 import { useContractFunction } from "@usedapp/core";
 import { Contract } from "@ethersproject/contracts";
 import { utils } from 'ethers';
@@ -7,13 +7,14 @@ import Number from './Number';
 
 type MintProps = {
   contract: Contract;
+  functionName: string;
 }
 
-const Mint: React.FC<MintProps> = ({ contract }) => {
+const Mint: React.FC<MintProps> = ({ contract, functionName }) => {
 
   const [amount, setAmount] = useState(1);
 
-  const { state, send } = useContractFunction(contract, 'mintMeta', {});
+  const { state, send } = useContractFunction(contract, functionName, {});
 
   const goMint = () => {
     send(amount, {
@@ -22,7 +23,6 @@ const Mint: React.FC<MintProps> = ({ contract }) => {
   };
 
   return (
-
     <VStack spacing={4} >
       <Number value={amount} setValue={setAmount}
         label="Select the amount to mint. Max: 5 per txn" />
