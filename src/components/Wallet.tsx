@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Tag } from 'antd';
+import { Container, VStack, Button, Tag } from '@chakra-ui/react';
 import { shortenAddress, useEthers, useConfig, useLookupAddress, Mainnet } from "@usedapp/core";
 
 function Wallet() {
@@ -10,7 +10,7 @@ function Wallet() {
   const ens = useLookupAddress();
   const { account, chainId, activateBrowserWallet, deactivate, error, isLoading } = useEthers();
 
-  const networks =  useConfig().networks
+  const networks = useConfig().networks
 
   useEffect(() => {
     if (ens) {
@@ -37,22 +37,33 @@ function Wallet() {
 
   if (rendered === "") {
     return (
-      <Button type="primary" loading={isLoading} onClick={() => {
-        if (!account) {
-          activateBrowserWallet();
-        } else {
-          deactivate();
-        }
-      }}>
-        Connect Wallet
-      </Button>
+      <VStack spacing={2} >
+        <Button
+          size='md'
+          height='48px'
+          width='400px'
+          maxW={400}
+          border='2px'
+          colorScheme='teal'
+          variant='solid'
+          isLoading={isLoading}
+          onClick={() => {
+            if (!account) {
+              activateBrowserWallet();
+            } else {
+              deactivate();
+            }
+          }}>
+          Connect Wallet
+        </Button>
+      </VStack>
     )
   } else {
     return (
       <>
         {chain.chainName}
         <Tag color="blue">{rendered}</Tag>
-        <Button type="link" onClick={deactivate}>
+        <Button variant='link' onClick={deactivate}>
           Logout
         </Button>
       </>

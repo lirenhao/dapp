@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
-import { ConfigProvider, BackTop } from 'antd';
+import { ChakraProvider, Container, Center } from '@chakra-ui/react'
 import { useEthers } from "@usedapp/core";
 import { Contract } from "@ethersproject/contracts";
 import { addresses, abis } from "./contracts";
 import Header from './components/Header';
-import LrhMeta from './components/LrhMeta';
+import Mint from './components/Mint';
+import Wallet from './components/Wallet';
 
 import './App.css';
 
@@ -21,14 +22,15 @@ function App() {
   }, [account, library]);
 
   return (
-    <ConfigProvider>
-      <BackTop />
+    <ChakraProvider>
       <Header />
-      {lrhMetaContract ? 
-        <LrhMeta contract={lrhMetaContract} /> : 
-        <div style={{textAlign: "center"}}>Please go to connect wallet!</div>
-      }
-    </ConfigProvider>
+      <Container borderWidth='1px' borderRadius='lg' p={4} marginTop={100}>
+        {lrhMetaContract ?
+          <Mint contract={lrhMetaContract} /> :
+          <Wallet />
+        }
+      </Container>
+    </ChakraProvider>
   );
 }
 
