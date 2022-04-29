@@ -1,6 +1,6 @@
 import React from 'react';
-import { Flex, Box, HStack, Avatar, Heading, Spacer, Button } from '@chakra-ui/react';
-import { FaFacebook, FaTwitter } from 'react-icons/fa'
+import { Flex, Box, HStack, Avatar, Heading, Spacer } from '@chakra-ui/react';
+import { FaFacebook, FaTwitter, FaDiscord } from 'react-icons/fa'
 import logo from '../logo.svg';
 
 type HeaderProps = {
@@ -10,7 +10,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = () => {
 
   return (
-    <Flex bg="teal" align="center" >
+    <Flex bg="teal" align="center" position="sticky" top="0" zIndex="1">
       <Spacer />
       <Box p='4'>
         <HStack>
@@ -22,13 +22,16 @@ const Header: React.FC<HeaderProps> = () => {
       </Box>
       <Spacer />
       <Box p='4'>
-        <HStack spacing={2}>
-          <Button variant='link'>
+        <HStack spacing={4}>
+          <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
             <FaFacebook size="30" color="white" />
-          </Button>
-          <Button variant='link'>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
             <FaTwitter size="30" color="white" />
-          </Button>
+          </a>
+          <a href="https://www.discord.com" target="_blank" rel="noreferrer">
+            <FaDiscord size="30" color="white" />
+          </a>
         </HStack>
       </Box>
       <Spacer />
